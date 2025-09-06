@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import './styling_global.css';
 import './ResultsPage.css';
+import imgSide from '../assets/images/2.png';
 
 const SPOONACULAR_API_KEY = import.meta.env.VITE_SPOONACULAR_API_KEY;
 
@@ -45,24 +46,28 @@ function ResultPage() {
   }, [location.search]);
 
   return (
-    <div>
-      <h1>Recipe Result</h1>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      {recipe && (
-        <div className="recipe-card">
-          <h2>{recipe.title}</h2>
-          <img src={recipe.image} alt={recipe.title} style={{ maxWidth: '300px' }} />
-          {recipe.summary && (
-            <p dangerouslySetInnerHTML={{ __html: recipe.summary }} />
-          )}
-          {recipe.instructions && (
-            <div>
-              <h3>Instructions</h3>
-              <p dangerouslySetInnerHTML={{ __html: recipe.instructions }} />
-            </div>
-          )}
-        </div>
-      )}
+    <div className="results-page-wrapper">
+      <img src={imgSide} alt="Decorative left" className="side-img left-img" />
+      <img src={imgSide} alt="Decorative right" className="side-img right-img" />
+      <div className="results-content">
+        <h1>Recipe Result</h1>
+        {error && <p style={{ color: 'red' }}>{error}</p>}
+        {recipe && (
+          <div className="recipe-card">
+            <h2>{recipe.title}</h2>
+            <img src={recipe.image} alt={recipe.title} style={{ maxWidth: '300px' }} />
+            {recipe.summary && (
+              <p dangerouslySetInnerHTML={{ __html: recipe.summary }} />
+            )}
+            {recipe.instructions && (
+              <div>
+                <h3>Instructions</h3>
+                <p dangerouslySetInnerHTML={{ __html: recipe.instructions }} />
+              </div>
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

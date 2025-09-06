@@ -1,0 +1,16 @@
+.results-page-wrapper {
+  position: relative;
+  min-height: 100vh;
+}
+
+.results-content {
+  position: relative;
+  z-index: 2;
+  max-width: 400px; /* Match contact-container */
+  min-width: 300px; /* Match contact-container */
+  margin: 80px auto;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  background-color: #FEC576; /* Match contact page background */
+}
