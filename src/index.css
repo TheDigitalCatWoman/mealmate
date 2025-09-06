@@ -62,7 +62,9 @@ button:focus-visible {
   a:hover {
     color: #747bff;
   }
+  /* This universal CSS was making my buttons white! Wrong! Make sure nothing else is affected by this file
   button {
     background-color: #f9f9f9;
   }
+    */
 }

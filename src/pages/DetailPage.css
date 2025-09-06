@@ -1,0 +1,36 @@
+.detail-container {
+  text-align: center;
+  padding: 2rem;
+  font-family: 'Macondo Swash Caps', cursive;
+  color: #333;
+}
+
+.detail-image {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+.detail-title {
+  font-size: 2rem;
+  color: #FEC576;
+}
+
+.detail-description {
+  max-width: 500px;
+  margin: 0 auto 2rem;
+  font-size: 1rem;
+  color: #444;
+}
+
+.back-button {
+  background-color: #FEC576;
+  color: #000;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 8px;
+}
