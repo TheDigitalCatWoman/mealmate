@@ -12,7 +12,7 @@ function ResultPage() {
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
-    const isSurprise = params.get('surprise') === 'true';
+    const isSurprise = params.get('surprise') === 'true' ? true : false;
 
     async function fetchRecipe() {
       try {
