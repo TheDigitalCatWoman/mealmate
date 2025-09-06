@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './styling_global.css';
 import './DetailPage.css';
+import imgSide from '../assets/images/3.png';
 
 const SPOONACULAR_API_KEY = import.meta.env.VITE_SPOONACULAR_API_KEY;
 
@@ -45,6 +46,8 @@ function DetailPage() {
 
   return (
     <div className="detail-container">
+      <img src={imgSide} alt="Decorative left" className="side-img left-img" />
+      <img src={imgSide} alt="Decorative right" className="side-img right-img" />
       <button className="back-button" onClick={handleBackClick}>
         &lt; Back
       </button>
