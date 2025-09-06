@@ -12,43 +12,29 @@ function ResultPage() {
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
-    const isSurprise = params.get('surprise') === 'true' ? true : false;
 
     async function fetchRecipe() {
       try {
-        if (isSurprise) {
-          // Fetch a random recipe
-          const response = await fetch(
-            `https://api.spoonacular.com/recipes/random?apiKey=${SPOONACULAR_API_KEY}`
+        // Fetch recipes based on ingredients
+        const query = params.get('q');
+        if (!query) {
+          setError('No ingredients provided.');
+          return;
+        }
+        const response = await fetch(
+          `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${encodeURIComponent(query)}&number=1&apiKey=${SPOONACULAR_API_KEY}`
+        );
+        const data = await response.json();
+        if (data && data.length > 0) {
+          // Fetch full recipe details for the first result
+          const recipeId = data[0].id;
+          const detailResponse = await fetch(
+            `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${SPOONACULAR_API_KEY}`
           );
-          const data = await response.json();
-          if (data.recipes && data.recipes.length > 0) {
-            setRecipe(data.recipes[0]);
-          } else {
-            setError('No recipe found.');
-          }
+          const detailData = await detailResponse.json();
+          setRecipe(detailData);
         } else {
-          // Fetch recipes based on ingredients
-          const query = params.get('q');
-          if (!query) {
-            setError('No ingredients provided.');
-            return;
-          }
-          const response = await fetch(
-            `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${encodeURIComponent(query)}&number=1&apiKey=${SPOONACULAR_API_KEY}`
-          );
-          const data = await response.json();
-          if (data && data.length > 0) {
-            // Fetch full recipe details for the first result
-            const recipeId = data[0].id;
-            const detailResponse = await fetch(
-              `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${SPOONACULAR_API_KEY}`
-            );
-            const detailData = await detailResponse.json();
-            setRecipe(detailData);
-          } else {
-            setError('No recipes found for those ingredients.');
-          }
+          setError('No recipes found for those ingredients.');
         }
       } catch (err) {
         setError('Failed to fetch recipe.');
