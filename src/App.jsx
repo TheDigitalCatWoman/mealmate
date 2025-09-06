@@ -2,7 +2,7 @@ import { Routes, Route, Navigate, Link } from 'react-router-dom';
 import SearchPage from './pages/SearchPage.jsx';
 import ContactPage from './pages/ContactPage.jsx';
 import LoginPage from './pages/LoginPage.jsx';
-import ResultPage from './pages/ResultPage';
+import ResultPage from './pages/ResultsPage.jsx';
 import DetailPage from './pages/DetailPage';
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
         <Route path="/search" element={<SearchPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/result" element={<ResultPage />} />
+        <Route path="/results" element={<ResultPage />} />
         <Route path="/detail" element={<DetailPage />} />
       </Routes>
     </>
