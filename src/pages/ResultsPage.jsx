@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import './styling_global.css';
 import './ResultsPage.css';
 
-const SPOONACULAR_API_KEY = 'YOUR_API_KEY_HERE'; // Replace with your actual key
+const SPOONACULAR_API_KEY = import.meta.env.VITE_SPOONACULAR_API_KEY;
 
 function ResultPage() {
   const [recipe, setRecipe] = useState(null);
