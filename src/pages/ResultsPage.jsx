@@ -23,7 +23,7 @@ function ResultPage() {
           return;
         }
         const response = await fetch(
-          `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${encodeURIComponent(query)}&number=3&apiKey=${SPOONACULAR_API_KEY}`
+          `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${encodeURIComponent(query)}&number=3&ranking=2&apiKey=${SPOONACULAR_API_KEY}`
         );
         const data = await response.json();
         if (data && data.length > 0) {
