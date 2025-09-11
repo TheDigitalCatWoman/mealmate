@@ -63,7 +63,7 @@ function DetailPage() {
       </button>
       <div className="detail-content">
         <h1 className="detail-title">Recipe Detail</h1>
-        {error && <p style={{ color: 'red' }}>{error}</p>}
+        {error && !recipe && <p style={{ color: 'red' }}>{error}</p>}
         {recipe && (
           <div className="detail-recipe-box">
             <div className="detail-img-circle">
