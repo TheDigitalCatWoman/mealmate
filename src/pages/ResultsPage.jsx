@@ -43,10 +43,17 @@ function ResultPage() {
     navigate(`/detail?id=${id}`);
   };
 
+  const handleBackClick = () => {
+    navigate(-1);
+  };
+
   return (
     <div className="results-page-wrapper">
       <img src={imgSide} alt="Decorative left" className="side-img left-img" />
       <img src={imgSide} alt="Decorative right" className="side-img right-img" />
+      <button className="back-button-floating" onClick={handleBackClick}>
+        &lt; Back
+      </button>
       <div className="results-content">
         <h1>Recipe Results</h1>
         {error && <p style={{ color: 'red' }}>{error}</p>}
