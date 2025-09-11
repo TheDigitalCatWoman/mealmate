@@ -51,7 +51,7 @@ function DetailPage() {
   }, [location.search]);
 
   const handleBackClick = () => {
-    navigate('/results');
+    navigate(-1);
   };
 
   return (
