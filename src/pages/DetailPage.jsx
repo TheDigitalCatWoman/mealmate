@@ -14,6 +14,7 @@ function DetailPage() {
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
+    const recipeId = params.get('id');
     const isSurprise = params.get('surprise') === 'true';
 
     async function fetchRecipe() {
@@ -28,6 +29,17 @@ function DetailPage() {
             setRecipe(data.recipes[0]);
           } else {
             setError('No recipe found.');
+          }
+        } else if (recipeId) {
+          // Fetch recipe by ID
+          const response = await fetch(
+            `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${SPOONACULAR_API_KEY}`
+          );
+          const data = await response.json();
+          if (data && data.id) {
+            setRecipe(data);
+          } else {
+            setError('Recipe not found.');
           }
         } else {
           setError('No recipe to show.');
@@ -59,7 +71,7 @@ function DetailPage() {
           <img
             src={recipe.image}
             alt={recipe.title}
-            style={{ maxWidth: '300px' }}
+            style={{ maxWidth: '300px', borderRadius: '16px' }}
             className="detail-image"
           />
           {recipe.summary && (
