@@ -61,7 +61,7 @@ function LoginPage() {
       await axios.post(
         `${BASE_URL}/api/users`,
         {
-          email: ` ${email} `,
+          email: `${email}`,
           password,
           roles: ['member']
         },
