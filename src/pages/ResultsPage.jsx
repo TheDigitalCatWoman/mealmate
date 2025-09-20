@@ -13,6 +13,13 @@ function ResultPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    // Check for token in localStorage
+    const token = localStorage.getItem('token');
+    if (!token) {
+      navigate('/login');
+      return;
+    }
+
     const params = new URLSearchParams(location.search);
 
     async function fetchRecipes() {
@@ -37,7 +44,7 @@ function ResultPage() {
     }
 
     fetchRecipes();
-  }, [location.search]);
+  }, [location.search, navigate]);
 
   const handleRecipeClick = (id) => {
     navigate(`/detail?id=${id}`);
