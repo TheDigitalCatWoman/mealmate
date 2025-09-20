@@ -4,6 +4,7 @@ import './styling_global.css';
 import './DetailPage.css';
 import imgSide from '../assets/images/3.png';
 import BackButton from '../components/BackButton';
+import CircleImage from '../components/CircleImage';
 
 const SPOONACULAR_API_KEY = import.meta.env.VITE_SPOONACULAR_API_KEY;
 
@@ -76,11 +77,7 @@ function DetailPage() {
         {recipe && (
           <div className="detail-recipe-box">
             <div className="detail-img-circle">
-              <img
-                src={recipe.image}
-                alt={recipe.title}
-                className="circle-img"
-              />
+              <CircleImage src={recipe.image} alt={recipe.title} />
             </div>
             <div className="detail-recipe-title">{recipe.title}</div>
             <div className="detail-recipe-texts">

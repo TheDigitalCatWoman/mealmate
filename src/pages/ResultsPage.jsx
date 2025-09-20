@@ -4,6 +4,7 @@ import './styling_global.css';
 import './ResultsPage.css';
 import imgSide from '../assets/images/2.png';
 import BackButton from '../components/BackButton';
+import CircleImage from '../components/CircleImage';
 
 const SPOONACULAR_API_KEY = import.meta.env.VITE_SPOONACULAR_API_KEY;
 
@@ -76,13 +77,7 @@ function ResultPage() {
               role="button"
               style={{ cursor: 'pointer' }}
             >
-              <div className="recipe-img-circle">
-                <img
-                  src={recipe.image}
-                  alt={recipe.title}
-                  className="circle-img"
-                />
-              </div>
+              <CircleImage src={recipe.image} alt={recipe.title} />
               <div className="recipe-title">{recipe.title}</div>
             </div>
           ))}
