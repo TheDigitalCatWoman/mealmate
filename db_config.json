@@ -45,6 +45,38 @@
            "admin"
         ]
       }
+    },
+    {
+      "name" : "password-reset" ,
+       "fields" : [
+        {
+          "name" : "timestamp" ,
+           "type" : "string" ,
+           "required" : true
+        },
+        {
+          "name" : "email" ,
+           "type" : "string" ,
+           "required" : true ,
+           "min" : 1,
+           "max" : 200
+        }
+      ],
+      "permissions" : {
+         "GET" : [
+           "editor" ,
+           "admin"
+        ],
+        "POST" : [
+           "anonymous" ,
+           "member" ,
+           "admin" ,
+           "editor"
+        ],
+        "DELETE" : [
+           "admin"
+        ]
+      }
     }
   ],
   "users" : [
