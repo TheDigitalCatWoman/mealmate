@@ -130,3 +130,26 @@ a {
 .back-button:hover {
   background: #e6b05e;
 }
+
+.app-btn {
+  background: #605341;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 8px;
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+  font-family: inherit;
+  cursor: pointer;
+  margin: 0.5rem 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: background 0.2s, color 0.2s, border 0.2s;
+  width: 100%; /* Make button same width as input boxes */
+  box-sizing: border-box;
+}
+
+.app-btn:hover, .app-btn:focus {
+  background: #4d4436;
+  color: #fff;
+  border-color: #fff;
+  outline: none; /* Remove outline on focus */
+}

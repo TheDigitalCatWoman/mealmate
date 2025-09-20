@@ -5,6 +5,7 @@ import './styling_global.css';
 import './ContactPage.css';
 import BackButton from '../components/BackButton';
 import SideImages from '../components/SideImages';
+import AppButton from '../components/AppButton';
 import leftImg from '../assets/images/1.png';
 import rightImg from '../assets/images/1.png';
 
@@ -77,7 +78,7 @@ function ContactPage() {
               value={message}
               onChange={e => setMessage(e.target.value)}
             />
-            <button type="submit">Send</button>
+            <AppButton type="submit">Send</AppButton>
           </form>
         )}
       </div>

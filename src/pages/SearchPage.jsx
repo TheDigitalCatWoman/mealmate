@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './styling_global.css';
 import "./SearchPage.css";
 import BackButton from '../components/BackButton';
+import AppButton from '../components/AppButton';
 
 export default function SearchPage() {
   const navigate = useNavigate();
@@ -82,10 +83,8 @@ export default function SearchPage() {
             </p>
           )}
 
-          <button type="submit" className="btn btn-primary">Search Recipes</button>
-          <button type="button" className="btn btn-secondary" onClick={handleSurprise}>
-            Surprise me!
-          </button>
+          <AppButton type="submit">Search Recipes</AppButton>
+          <AppButton type="button" onClick={handleSurprise}>Surprise me!</AppButton>
         </form>
 
         {/* Back button below the Surprise Me button */}

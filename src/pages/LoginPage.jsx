@@ -4,6 +4,7 @@ import axios from 'axios';
 import './styling_global.css';
 import './LoginPage.css';
 import mealmateLogo from "../assets/images/mealmate-logo.png";
+import AppButton from '../components/AppButton';
 
 const BASE_URL = 'https://novi-backend-api-wgsgz.ondigitalocean.app';
 
@@ -99,8 +100,8 @@ function LoginPage() {
           value={password}
           onChange={e => setPassword(e.target.value)}
         />
-        <button type="submit">Login</button>
-        <button type="button" onClick={register}>Register</button>
+        <AppButton type="submit">Login</AppButton>
+        <AppButton type="button" onClick={register}>Register</AppButton>
       </form>
 
       {error && <p style={{ color: 'red' }}>{error}</p>}
