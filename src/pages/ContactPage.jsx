@@ -3,8 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './styling_global.css';
 import './ContactPage.css';
-import imgSide from '../assets/images/1.png';
 import BackButton from '../components/BackButton';
+import SideImages from '../components/SideImages';
+import leftImg from '../assets/images/1.png';
+import rightImg from '../assets/images/1.png';
 
 const BASE_URL = 'https://novi-backend-api-wgsgz.ondigitalocean.app'; // Replace with your actual base URL
 
@@ -39,8 +41,7 @@ function ContactPage() {
 
   return (
     <div className="contact-page-wrapper">
-      <img src={imgSide} alt="Decorative left" className="side-img left-img" />
-      <img src={imgSide} alt="Decorative right" className="side-img right-img" />
+      <SideImages leftSrc={leftImg} rightSrc={rightImg} />
       {/* Floating back button */}
       <div className="back-button-floating-wrapper">
         <BackButton onClick={() => navigate(-1)} />

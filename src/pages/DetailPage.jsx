@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './styling_global.css';
 import './DetailPage.css';
-import imgSide from '../assets/images/3.png';
 import BackButton from '../components/BackButton';
 import CircleImage from '../components/CircleImage';
+import SideImages from '../components/SideImages';
+import leftImg from '../assets/images/3.png';
+import rightImg from '../assets/images/3.png';
 
 const SPOONACULAR_API_KEY = import.meta.env.VITE_SPOONACULAR_API_KEY;
 
@@ -65,8 +67,7 @@ function DetailPage() {
 
   return (
     <div className="detail-page-wrapper">
-      <img src={imgSide} alt="Decorative left" className="side-img left-img" />
-      <img src={imgSide} alt="Decorative right" className="side-img right-img" />
+      <SideImages leftSrc={leftImg} rightSrc={rightImg} />
       <div className="detail-content">
         <h1 className="detail-title">Recipe Detail</h1>
         {error && !recipe && <p style={{ color: 'red' }}>{error}</p>}
