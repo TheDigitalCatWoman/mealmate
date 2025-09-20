@@ -31,14 +31,15 @@ function LoginPage() {
       );
       localStorage.setItem('token', response.data.token);
       if (response.data.token) {
-        window.location.href = '/search'; // Route to search page
+        navigate('/search');
       }
     } catch (e) {
       setError('Login failed. Please check your credentials.');
     }
   }
 
-  async function register() {
+  async function register(e) {
+    e.preventDefault();
     setError('');
     try {
       // Fetch all users first
@@ -107,7 +108,7 @@ function LoginPage() {
       {error && <p style={{ color: 'red' }}>{error}</p>}
 
       <p className="register-hint">
-        <Link to="/contact">Forgot password?</Link>  |  <Link to="/contact">Contact</Link>
+        <Link to="/reset-password">Forgot password?</Link>  |  <Link to="/contact">Contact</Link>
       </p>
     </div>
   );
