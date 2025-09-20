@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './styling_global.css';
 import "./SearchPage.css";
@@ -7,6 +7,13 @@ export default function SearchPage() {
   const navigate = useNavigate();
   const [ingredients, setIngredients] = useState(["", "", ""]);
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      navigate('/login');
+    }
+  }, [navigate]);
 
   const updateIngredient = (i, value) => {
     const newIngredients = [...ingredients];
