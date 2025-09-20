@@ -59,10 +59,13 @@ function ResultPage() {
     <div className="results-page-wrapper">
       <img src={imgSide} alt="Decorative left" className="side-img left-img" />
       <img src={imgSide} alt="Decorative right" className="side-img right-img" />
-      <BackButton onClick={handleBackClick} />
       <div className="results-content">
-        <h1>Recipe Results</h1>
+        <h1 className="results-header-title">Recipe Results</h1>
         {error && <p style={{ color: 'red' }}>{error}</p>}
+        {/* Back button just above the recipe list */}
+        <div style={{ marginBottom: "1.5rem", display: "flex", justifyContent: "flex-start" }}>
+          <BackButton onClick={handleBackClick} />
+        </div>
         <div className="recipe-list">
           {recipes.map(recipe => (
             <div

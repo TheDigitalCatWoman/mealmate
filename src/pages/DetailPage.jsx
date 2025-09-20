@@ -66,10 +66,13 @@ function DetailPage() {
     <div className="detail-page-wrapper">
       <img src={imgSide} alt="Decorative left" className="side-img left-img" />
       <img src={imgSide} alt="Decorative right" className="side-img right-img" />
-      <BackButton onClick={handleBackClick} />
       <div className="detail-content">
         <h1 className="detail-title">Recipe Detail</h1>
         {error && !recipe && <p style={{ color: 'red' }}>{error}</p>}
+        {/* Move BackButton here, just above the recipe overview */}
+        <div className="detail-back-btn-row">
+          <BackButton onClick={handleBackClick} />
+        </div>
         {recipe && (
           <div className="detail-recipe-box">
             <div className="detail-img-circle">
