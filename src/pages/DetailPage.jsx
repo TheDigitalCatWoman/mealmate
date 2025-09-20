@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import './styling_global.css';
 import './DetailPage.css';
 import imgSide from '../assets/images/3.png';
+import BackButton from '../components/BackButton';
 
 const SPOONACULAR_API_KEY = import.meta.env.VITE_SPOONACULAR_API_KEY;
 
@@ -65,9 +66,7 @@ function DetailPage() {
     <div className="detail-page-wrapper">
       <img src={imgSide} alt="Decorative left" className="side-img left-img" />
       <img src={imgSide} alt="Decorative right" className="side-img right-img" />
-      <button className="back-button-floating" onClick={handleBackClick}>
-        &lt; Back
-      </button>
+      <BackButton onClick={handleBackClick} />
       <div className="detail-content">
         <h1 className="detail-title">Recipe Detail</h1>
         {error && !recipe && <p style={{ color: 'red' }}>{error}</p>}
