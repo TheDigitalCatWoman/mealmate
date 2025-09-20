@@ -91,3 +91,21 @@ a {
 .login-container img {
   width: 100%;
 }
+
+.side-img {
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  width: 20vw;
+  z-index: 1;
+  object-fit: cover;
+  pointer-events: none; /* So they don't block clicks */
+}
+
+.left-img {
+  left: 0;
+}
+
+.right-img {
+  right: 0;
+}

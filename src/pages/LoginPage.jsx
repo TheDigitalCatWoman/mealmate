@@ -19,7 +19,7 @@ function LoginPage() {
       const response = await axios.post(
         `${BASE_URL}/api/login`,
         {
-          email: ` ${email} `,
+          email: `${email}`,
           password
         },
         {
@@ -29,6 +29,9 @@ function LoginPage() {
         }
       );
       localStorage.setItem('token', response.data.token);
+      if (response.data.token) {
+        window.location.href = '/search'; // Route to search page
+      }
     } catch (e) {
       setError('Login failed. Please check your credentials.');
     }
@@ -58,7 +61,7 @@ function LoginPage() {
       await axios.post(
         `${BASE_URL}/api/users`,
         {
-          email: ` ${email} `,
+          email: `${email}`,
           password,
           roles: ['member']
         },

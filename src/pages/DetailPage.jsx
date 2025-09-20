@@ -1,29 +1,99 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './styling_global.css';
 import './DetailPage.css';
-import { useNavigate } from 'react-router-dom';
+import imgSide from '../assets/images/3.png';
+
+const SPOONACULAR_API_KEY = import.meta.env.VITE_SPOONACULAR_API_KEY;
 
 function DetailPage() {
+  const [recipe, setRecipe] = useState(null);
+  const [error, setError] = useState('');
+  const location = useLocation();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const recipeId = params.get('id');
+    const isSurprise = params.get('surprise') === 'true';
+
+    async function fetchRecipe() {
+      try {
+        if (isSurprise) {
+          const response = await fetch(
+            `https://api.spoonacular.com/recipes/random?apiKey=${SPOONACULAR_API_KEY}`
+          );
+          const data = await response.json();
+          if (data.recipes && data.recipes.length > 0) {
+            setRecipe(data.recipes[0]);
+          } else {
+            setError('No recipe found.');
+          }
+        } else if (recipeId) {
+          const response = await fetch(
+            `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${SPOONACULAR_API_KEY}`
+          );
+          const data = await response.json();
+          if (data && data.id) {
+            setRecipe(data);
+          } else {
+            setError('Recipe not found.');
+          }
+        } else {
+          setError('No recipe to show.');
+        }
+      } catch (err) {
+        setError('Failed to fetch recipe.');
+      }
+    }
+
+    fetchRecipe();
+  }, [location.search]);
+
   const handleBackClick = () => {
-    navigate('/results');
+    navigate(-1);
   };
 
   return (
-    <div className="detail-container">
-      <img
-        src="/assets/mealmate-logo.png" // temporary placeholder image
-        alt="Recipe"
-        className="detail-image"
-      />
-      <h1 className="detail-title">Recipe Title</h1>
-      <p className="detail-description">
-        This is a short description of the selected recipe. Later we’ll get this from Spoonacular API.
-      </p>
-      <button className="back-button" onClick={handleBackClick}>
+    <div className="detail-page-wrapper">
+      <img src={imgSide} alt="Decorative left" className="side-img left-img" />
+      <img src={imgSide} alt="Decorative right" className="side-img right-img" />
+      <button className="back-button-floating" onClick={handleBackClick}>
         &lt; Back
       </button>
+      <div className="detail-content">
+        <h1 className="detail-title">Recipe Detail</h1>
+        {error && !recipe && <p style={{ color: 'red' }}>{error}</p>}
+        {recipe && (
+          <div className="detail-recipe-box">
+            <div className="detail-img-circle">
+              <img
+                src={recipe.image}
+                alt={recipe.title}
+                className="circle-img"
+              />
+            </div>
+            <div className="detail-recipe-title">{recipe.title}</div>
+            <div className="detail-recipe-texts">
+              {recipe.summary && (
+                <p
+                  dangerouslySetInnerHTML={{ __html: recipe.summary }}
+                  className="detail-description"
+                />
+              )}
+              {recipe.instructions && (
+                <div>
+                  <h3>Instructions</h3>
+                  <p
+                    dangerouslySetInnerHTML={{ __html: recipe.instructions }}
+                    className="detail-instructions"
+                  />
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

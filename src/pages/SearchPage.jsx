@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './styling_global.css';
 import "./SearchPage.css";
 
@@ -9,34 +9,23 @@ export default function SearchPage() {
   const [error, setError] = useState("");
 
   const updateIngredient = (i, value) => {
-    const copy = [...ingredients];
-    copy[i] = value;
-    setIngredients(copy);
+    const newIngredients = [...ingredients];
+    newIngredients[i] = value;
+    setIngredients(newIngredients);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const nonEmpty = ingredients.map(s => s.trim()).filter(Boolean);
-
-    if (nonEmpty.length === 0) {
+    const query = ingredients.filter(Boolean).join(",");
+    if (!query) {
       setError("Please enter at least one ingredient.");
       return;
     }
-    if (nonEmpty.length > 3) {
-      setError("You can search with up to 3 ingredients.");
-      return;
-    }
-
-    setError("");
-    // Pass ingredients to the results page (you already have the route).
-    // Example with query params:
-    const query = new URLSearchParams({ q: nonEmpty.join(",") }).toString();
-    navigate(`/results?${query}`);
+    navigate(`/results?q=${encodeURIComponent(query)}`);
   };
 
   const handleSurprise = () => {
-    // Navigate to results with a random flag (you’ll wire logic later).
-    navigate("/results?surprise=true");
+    navigate("/detail?surprise=true");
   };
 
   return (

@@ -43,7 +43,7 @@ function ContactPage() {
       {/* Floating back button */}
       <button
         className="back-button-floating"
-        onClick={() => navigate(-1)}
+        onClick={() => navigate("/login")}
         type="button"
       >
         {"< Back"}
