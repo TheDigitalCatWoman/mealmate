@@ -42,7 +42,9 @@ function ContactPage() {
       <img src={imgSide} alt="Decorative left" className="side-img left-img" />
       <img src={imgSide} alt="Decorative right" className="side-img right-img" />
       {/* Floating back button */}
-      <BackButton onClick={() => navigate("/login")} />
+      <div className="back-button-floating-wrapper">
+        <BackButton onClick={() => navigate(-1)} />
+      </div>
       <div className="contact-container">
         <h2>Contact form</h2>
         {submitted ? (

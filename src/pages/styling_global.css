@@ -109,3 +109,24 @@ a {
 .right-img {
   right: 0;
 }
+
+.back-button {
+  border: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  background: #FEC576;
+  color: #000;
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  z-index: 10;
+  margin-top: 0.5rem;
+}
+
+.back-button:hover {
+  background: #e6b05e;
+}
