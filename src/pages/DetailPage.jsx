@@ -5,6 +5,7 @@ import './DetailPage.css';
 import BackButton from '../components/BackButton';
 import CircleImage from '../components/CircleImage';
 import SideImages from '../components/SideImages';
+import RecipeDetail from '../components/RecipeDetail';
 import leftImg from '../assets/images/3.png';
 import rightImg from '../assets/images/3.png';
 
@@ -75,31 +76,7 @@ function DetailPage() {
         <div className="detail-back-btn-row">
           <BackButton onClick={handleBackClick} />
         </div>
-        {recipe && (
-          <div className="detail-recipe-box">
-            <div className="detail-img-circle">
-              <CircleImage src={recipe.image} alt={recipe.title} />
-            </div>
-            <div className="detail-recipe-title">{recipe.title}</div>
-            <div className="detail-recipe-texts">
-              {recipe.summary && (
-                <p
-                  dangerouslySetInnerHTML={{ __html: recipe.summary }}
-                  className="detail-description"
-                />
-              )}
-              {recipe.instructions && (
-                <div>
-                  <h3>Instructions</h3>
-                  <p
-                    dangerouslySetInnerHTML={{ __html: recipe.instructions }}
-                    className="detail-instructions"
-                  />
-                </div>
-              )}
-            </div>
-          </div>
-        )}
+        {recipe && <RecipeDetail recipe={recipe} />}
       </div>
     </div>
   );
