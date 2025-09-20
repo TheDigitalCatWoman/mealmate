@@ -66,3 +66,10 @@
 .back-button-floating:hover {
   background: #e6b05e;
 }
+
+.back-button-floating-wrapper {
+  position: absolute;
+  left: -80px;
+  top: 2.9rem;
+  z-index: 10;
+}

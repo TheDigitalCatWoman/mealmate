@@ -2,7 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './styling_global.css';
 import './ResultsPage.css';
-import imgSide from '../assets/images/2.png';
+import BackButton from '../components/BackButton';
+import CircleImage from '../components/CircleImage';
+import SideImages from '../components/SideImages';
+import RecipeBox from '../components/RecipeBox';
+import leftImg from '../assets/images/2.png';
+import rightImg from '../assets/images/2.png';
 
 const SPOONACULAR_API_KEY = import.meta.env.VITE_SPOONACULAR_API_KEY;
 
@@ -56,33 +61,22 @@ function ResultPage() {
 
   return (
     <div className="results-page-wrapper">
-      <img src={imgSide} alt="Decorative left" className="side-img left-img" />
-      <img src={imgSide} alt="Decorative right" className="side-img right-img" />
-      <button className="back-button-floating" onClick={handleBackClick}>
-        &lt; Back
-      </button>
+      <SideImages leftSrc={leftImg} rightSrc={rightImg} />
       <div className="results-content">
-        <h1>Recipe Results</h1>
+        <h1 className="results-header-title">Recipe Results</h1>
         {error && <p style={{ color: 'red' }}>{error}</p>}
+        {/* Back button just above the recipe list */}
+        <div style={{ marginBottom: "1.5rem", display: "flex", justifyContent: "flex-start" }}>
+          <BackButton onClick={handleBackClick} />
+        </div>
         <div className="recipe-list">
           {recipes.map(recipe => (
-            <div
-              className="recipe-box"
+            <RecipeBox
               key={recipe.id}
+              title={recipe.title}
+              image={recipe.image}
               onClick={() => handleRecipeClick(recipe.id)}
-              tabIndex={0}
-              role="button"
-              style={{ cursor: 'pointer' }}
-            >
-              <div className="recipe-img-circle">
-                <img
-                  src={recipe.image}
-                  alt={recipe.title}
-                  className="circle-img"
-                />
-              </div>
-              <div className="recipe-title">{recipe.title}</div>
-            </div>
+            />
           ))}
         </div>
       </div>

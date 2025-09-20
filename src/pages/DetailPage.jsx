@@ -2,7 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './styling_global.css';
 import './DetailPage.css';
-import imgSide from '../assets/images/3.png';
+import BackButton from '../components/BackButton';
+import CircleImage from '../components/CircleImage';
+import SideImages from '../components/SideImages';
+import RecipeDetail from '../components/RecipeDetail';
+import leftImg from '../assets/images/3.png';
+import rightImg from '../assets/images/3.png';
 
 const SPOONACULAR_API_KEY = import.meta.env.VITE_SPOONACULAR_API_KEY;
 
@@ -63,43 +68,15 @@ function DetailPage() {
 
   return (
     <div className="detail-page-wrapper">
-      <img src={imgSide} alt="Decorative left" className="side-img left-img" />
-      <img src={imgSide} alt="Decorative right" className="side-img right-img" />
-      <button className="back-button-floating" onClick={handleBackClick}>
-        &lt; Back
-      </button>
+      <SideImages leftSrc={leftImg} rightSrc={rightImg} />
       <div className="detail-content">
         <h1 className="detail-title">Recipe Detail</h1>
         {error && !recipe && <p style={{ color: 'red' }}>{error}</p>}
-        {recipe && (
-          <div className="detail-recipe-box">
-            <div className="detail-img-circle">
-              <img
-                src={recipe.image}
-                alt={recipe.title}
-                className="circle-img"
-              />
-            </div>
-            <div className="detail-recipe-title">{recipe.title}</div>
-            <div className="detail-recipe-texts">
-              {recipe.summary && (
-                <p
-                  dangerouslySetInnerHTML={{ __html: recipe.summary }}
-                  className="detail-description"
-                />
-              )}
-              {recipe.instructions && (
-                <div>
-                  <h3>Instructions</h3>
-                  <p
-                    dangerouslySetInnerHTML={{ __html: recipe.instructions }}
-                    className="detail-instructions"
-                  />
-                </div>
-              )}
-            </div>
-          </div>
-        )}
+        {/* Move BackButton here, just above the recipe overview */}
+        <div className="detail-back-btn-row">
+          <BackButton onClick={handleBackClick} />
+        </div>
+        {recipe && <RecipeDetail recipe={recipe} />}
       </div>
     </div>
   );
