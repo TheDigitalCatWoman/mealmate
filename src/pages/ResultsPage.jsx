@@ -5,6 +5,7 @@ import './ResultsPage.css';
 import BackButton from '../components/BackButton';
 import CircleImage from '../components/CircleImage';
 import SideImages from '../components/SideImages';
+import RecipeBox from '../components/RecipeBox';
 import leftImg from '../assets/images/2.png';
 import rightImg from '../assets/images/2.png';
 
@@ -70,17 +71,12 @@ function ResultPage() {
         </div>
         <div className="recipe-list">
           {recipes.map(recipe => (
-            <div
-              className="recipe-box"
+            <RecipeBox
               key={recipe.id}
+              title={recipe.title}
+              image={recipe.image}
               onClick={() => handleRecipeClick(recipe.id)}
-              tabIndex={0}
-              role="button"
-              style={{ cursor: 'pointer' }}
-            >
-              <CircleImage src={recipe.image} alt={recipe.title} />
-              <div className="recipe-title">{recipe.title}</div>
-            </div>
+            />
           ))}
         </div>
       </div>
