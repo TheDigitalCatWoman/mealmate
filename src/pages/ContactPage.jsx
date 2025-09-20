@@ -4,6 +4,7 @@ import axios from 'axios';
 import './styling_global.css';
 import './ContactPage.css';
 import imgSide from '../assets/images/1.png';
+import BackButton from '../components/BackButton';
 
 const BASE_URL = 'https://novi-backend-api-wgsgz.ondigitalocean.app'; // Replace with your actual base URL
 
@@ -41,13 +42,7 @@ function ContactPage() {
       <img src={imgSide} alt="Decorative left" className="side-img left-img" />
       <img src={imgSide} alt="Decorative right" className="side-img right-img" />
       {/* Floating back button */}
-      <button
-        className="back-button-floating"
-        onClick={() => navigate("/login")}
-        type="button"
-      >
-        {"< Back"}
-      </button>
+      <BackButton onClick={() => navigate("/login")} />
       <div className="contact-container">
         <h2>Contact form</h2>
         {submitted ? (
