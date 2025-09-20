@@ -13,6 +13,13 @@ function DetailPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    // Check for token in localStorage
+    const token = localStorage.getItem('token');
+    if (!token) {
+      navigate('/login');
+      return;
+    }
+
     const params = new URLSearchParams(location.search);
     const recipeId = params.get('id');
     const isSurprise = params.get('surprise') === 'true';
@@ -48,7 +55,7 @@ function DetailPage() {
     }
 
     fetchRecipe();
-  }, [location.search]);
+  }, [location.search, navigate]);
 
   const handleBackClick = () => {
     navigate(-1);
