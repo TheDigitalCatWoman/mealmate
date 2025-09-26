@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './styling_global.css';
 import './LoginPage.css';
 import mealmateLogo from "../assets/images/mealmate-logo.png";
 import AppButton from '../components/AppButton';
+import { Link } from 'react-router-dom';
 
 const BASE_URL = 'https://novi-backend-api-wgsgz.ondigitalocean.app';
 
@@ -107,7 +107,7 @@ function LoginPage() {
       {error && <p style={{ color: 'red' }}>{error}</p>}
 
       <p className="register-hint">
-        <Link to="/contact">Forgot password?</Link>  |  <Link to="/contact">Contact</Link>
+        <Link to="/reset-password">Forgot password?</Link>  |  <Link to="/contact">Contact</Link>
       </p>
     </div>
   );
