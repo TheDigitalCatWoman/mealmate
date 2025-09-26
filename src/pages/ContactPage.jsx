@@ -9,7 +9,7 @@ import AppButton from '../components/AppButton';
 import leftImg from '../assets/images/1.png';
 import rightImg from '../assets/images/1.png';
 
-const BASE_URL = 'https://novi-backend-api-wgsgz.ondigitalocean.app'; // Replace with your actual base URL
+const VITE_NOVI_API_URL = import.meta.env.VITE_NOVI_API_URL;
 
 function ContactPage() {
   const navigate = useNavigate();
@@ -22,7 +22,7 @@ function ContactPage() {
     e.preventDefault();
     try {
       await axios.post(
-        `${BASE_URL}/api/contact-form`,
+        `${VITE_NOVI_API_URL}/api/contact-form`,
         {
           name,
           email,

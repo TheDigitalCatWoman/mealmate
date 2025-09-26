@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './styling_global.css';
-import './ContactPage.css';
+import './ResetPasswordPage.css';
 import BackButton from '../components/BackButton';
 import SideImages from '../components/SideImages';
 import leftImg from '../assets/images/1.png';
 import rightImg from '../assets/images/1.png';
 
-const BASE_URL = 'https://novi-backend-api-wgsgz.ondigitalocean.app';
+const VITE_NOVI_API_URL = import.meta.env.VITE_NOVI_API_URL;
 
 function ResetPasswordPage() {
   const navigate = useNavigate();
@@ -19,7 +19,7 @@ function ResetPasswordPage() {
     e.preventDefault();
     try {
       await axios.post(
-        `${BASE_URL}/api/password-reset`,
+        `${VITE_NOVI_API_URL}/api/password-reset`,
         {
           email,
           timestamp: new Date().toISOString()
@@ -40,7 +40,7 @@ function ResetPasswordPage() {
   return (
     <div className="contact-page-wrapper">
       <SideImages leftSrc={leftImg} rightSrc={rightImg} />
-      <BackButton onClick={() => navigate(-1)} />
+      <BackButton onClick={() => navigate('/login')} />
       <div className="common-container">
         <h2>Reset Password</h2>
         {submitted ? (

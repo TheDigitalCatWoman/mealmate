@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './styling_global.css';
 import './LoginPage.css';
 import mealmateLogo from "../assets/images/mealmate-logo.png";
 import AppButton from '../components/AppButton';
+import { Link } from 'react-router-dom';
 
-const BASE_URL = 'https://novi-backend-api-wgsgz.ondigitalocean.app';
+const NOVI_API_URL = import.meta.env.VITE_NOVI_API_URL;
 
 function LoginPage() {
   const [email, setEmail] = useState('');
@@ -18,7 +18,7 @@ function LoginPage() {
     setError('');
     try {
       const response = await axios.post(
-        `${BASE_URL}/api/login`,
+        `${NOVI_API_URL}/api/login`,
         {
           email: `${email}`,
           password
@@ -44,7 +44,7 @@ function LoginPage() {
     try {
       // Fetch all users first
       const usersResponse = await axios.get(
-        `${BASE_URL}/api/users`,
+        `${NOVI_API_URL}/api/users`,
         {
           headers: {
             'novi-education-project-id': '433f34a6-eb0c-4814-8ed7-d3532507579b'
@@ -61,7 +61,7 @@ function LoginPage() {
       }
       // Proceed with registration
       await axios.post(
-        `${BASE_URL}/api/users`,
+        `${NOVI_API_URL}/api/users`,
         {
           email: `${email}`,
           password,
