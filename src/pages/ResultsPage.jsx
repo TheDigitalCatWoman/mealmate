@@ -62,7 +62,7 @@ function ResultPage() {
   return (
     <div className="results-page-wrapper">
       <SideImages leftSrc={leftImg} rightSrc={rightImg} />
-      <div className="results-content">
+      <div className="common-container">
         <h1 className="results-header-title">Recipe Results</h1>
         {error && <p style={{ color: 'red' }}>{error}</p>}
         {/* Back button just above the recipe list */}
