@@ -69,7 +69,7 @@ function DetailPage() {
   return (
     <div className="detail-page-wrapper">
       <SideImages leftSrc={leftImg} rightSrc={rightImg} />
-      <div className="detail-content">
+      <div className="common-container">
         <h1 className="detail-title">Recipe Detail</h1>
         {error && !recipe && <p style={{ color: 'red' }}>{error}</p>}
         {/* Move BackButton here, just above the recipe overview */}

@@ -41,7 +41,7 @@ function ContactPage() {
   }
 
   return (
-    <div className="contact-page-wrapper">
+    <div className="common-container">
       <SideImages leftSrc={leftImg} rightSrc={rightImg} />
       {/* Floating back button */}
       <div className="back-button-floating-wrapper">
