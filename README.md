@@ -1,12 +1,58 @@
-# React + Vite
+# MealMate Installatie Handleiding
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Benodigdheden
 
-Currently, two official plugins are available:
+- **Node.js** (versie 18 of hoger aanbevolen)
+- **npm** (wordt meegeleverd met Node.js)
+- **Git** (optioneel, voor het clonen van de repository)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Installatie Stappen
 
-## Expanding the ESLint configuration
+1. **Repository downloaden**
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+   Clone de repository met Git of download het project als zip-bestand en pak het uit.
+
+   ```bash
+   git clone git@github.com:TheDigitalCatWoman/mealmate.git
+   cd mealmate
+   ```
+
+2. **Afhankelijkheden installeren**
+
+   Installeer de benodigde npm packages:
+
+   ```bash
+   npm install
+   ```
+
+3. **.env bestand aanmaken**
+
+   Maak een bestand genaamd `.env` in de hoofdmap van het project en voeg de volgende regel toe:
+
+   ```
+   VITE_NOVI_API_URL=https://novi-backend-api-wgsgz.ondigitalocean.app
+   VITE_SPOONACULAR_API_KEY=<jouw_spoonacular_api_key>
+   ```
+
+   Het is ook mogelijk om `.env.example` te kopieeren naar `.env`.
+
+   Vervang `<jouw_spoonacular_api_key>` door `cabbfa370ce14f48838c4d20d2e64103`. Normaal deel je een API key niet maar ter beoordeling staat die er bij.
+
+4. **Project starten**
+
+   Start de ontwikkelserver:
+
+   ```bash
+   npm run dev
+   ```
+
+   De applicatie is nu bereikbaar op [http://localhost:5173](http://localhost:5173) (of een andere poort die in de terminal wordt weergegeven).
+
+## Opmerkingen
+
+- Zorg dat je Node.js en npm correct geïnstalleerd hebt. Controleer dit met `node -v` en `npm -v`.
+- Voor productie kun je het project bouwen met `npm run build`.
+
+---
+
+Veel succes met MealMate!
