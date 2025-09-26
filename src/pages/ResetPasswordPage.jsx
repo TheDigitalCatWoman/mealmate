@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './styling_global.css';
-import './ContactPage.css';
+import './ResetPasswordPage.css';
 import BackButton from '../components/BackButton';
 import SideImages from '../components/SideImages';
 import leftImg from '../assets/images/1.png';
