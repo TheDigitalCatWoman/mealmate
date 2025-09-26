@@ -40,8 +40,10 @@ function ResetPasswordPage() {
   return (
     <div className="contact-page-wrapper">
       <SideImages leftSrc={leftImg} rightSrc={rightImg} />
-      <BackButton onClick={() => navigate('/login')} />
       <div className="common-container">
+        <div style={{ display: "flex", justifyContent: "flex-start", marginBottom: "0.75rem" }}>
+          <BackButton onClick={() => navigate('/login')} />
+        </div>
         <h2>Reset Password</h2>
         {submitted ? (
           <p>Thank you! Someone will be in touch shortly.</p>
