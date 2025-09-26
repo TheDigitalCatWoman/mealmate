@@ -53,6 +53,14 @@
 - Zorg dat je Node.js en npm correct geïnstalleerd hebt. Controleer dit met `node -v` en `npm -v`.
 - Voor productie kun je het project bouwen met `npm run build`.
 
+## Testgebruikers
+
+|Gebruiker|Wachtwoord|Rol|
+|---------|----------|---|
+|admin123@mealmate.com|admin123|admin|
+|editor@mealmate.com|werkers123|editor|
+|member@mealmate.com|member123|member|
+
 ---
 
 Veel succes met MealMate!
