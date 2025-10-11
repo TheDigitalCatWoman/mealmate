@@ -1,6 +1,12 @@
-# MealMate Installatie Handleiding
+# Meal Mate Product Omschrijving
 
 Dit project is op GitHub: https://github.com/TheDigitalCatWoman/mealmate
+
+Meal Mate is een website waarop studenten met een beperkt budget kunnen zoeken naar recepten die gebruik maken van ingredienten die ze al in huis hebben.
+
+![Search page](searchpage.png "Search page")
+
+# MealMate Installatie Handleiding
 
 ## Benodigdheden
 
