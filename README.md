@@ -1,5 +1,7 @@
 # MealMate Installatie Handleiding
 
+Dit project is op GitHub: https://github.com/TheDigitalCatWoman/mealmate
+
 ## Benodigdheden
 
 - **Node.js** (versie 18 of hoger aanbevolen)
