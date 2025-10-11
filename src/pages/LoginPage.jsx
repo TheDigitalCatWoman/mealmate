@@ -13,6 +13,10 @@ function isValidEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
+function isValidPassword(password) {
+  return password.length >= 8;
+}
+
 function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -52,6 +56,10 @@ function LoginPage() {
     setError('');
     if (!isValidEmail(email)) {
       setError('Please enter a valid email address.');
+      return;
+    }
+    if (!isValidPassword(password)) {
+      setError('Password must be at least 8 characters long.');
       return;
     }
     try {
