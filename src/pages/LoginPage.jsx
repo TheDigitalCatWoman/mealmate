@@ -8,6 +8,11 @@ import { Link } from 'react-router-dom';
 
 const NOVI_API_URL = import.meta.env.VITE_NOVI_API_URL;
 
+function isValidEmail(email) {
+  // Simple email regex for validation
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
 function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -16,6 +21,10 @@ function LoginPage() {
   async function login(e) {
     e.preventDefault();
     setError('');
+    if (!isValidEmail(email)) {
+      setError('Please enter a valid email address.');
+      return;
+    }
     try {
       const response = await axios.post(
         `${NOVI_API_URL}/api/login`,
@@ -41,6 +50,10 @@ function LoginPage() {
   async function register(e) {
     e.preventDefault();
     setError('');
+    if (!isValidEmail(email)) {
+      setError('Please enter a valid email address.');
+      return;
+    }
     try {
       // Fetch all users first
       const usersResponse = await axios.get(
