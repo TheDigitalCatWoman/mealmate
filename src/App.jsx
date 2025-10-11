@@ -5,6 +5,7 @@ import LoginPage from './pages/LoginPage.jsx';
 import ResultPage from './pages/ResultsPage.jsx';
 import DetailPage from './pages/DetailPage';
 import ResetPasswordPage from './pages/ResetPasswordPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/results" element={<ResultPage />} />
         <Route path="/detail" element={<DetailPage />} />
         <Route path="/reset-password" element={<ResetPasswordPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>
   );
