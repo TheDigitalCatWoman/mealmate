@@ -17,9 +17,23 @@ function ContactPage() {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState('');
+
+  function isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
 
   async function handleSubmit(e) {
     e.preventDefault();
+    setError('');
+    if (!isValidEmail(email)) {
+      setError('Please enter a valid email address.');
+      return;
+    }
+    if (!message.trim()) {
+      setError('Please enter a message.');
+      return;
+    }
     try {
       await axios.post(
         `${VITE_NOVI_API_URL}/api/contact-form`,
@@ -78,6 +92,11 @@ function ContactPage() {
               value={message}
               onChange={e => setMessage(e.target.value)}
             />
+            {error && (
+              <p className="form-error" role="alert" aria-live="polite">
+                {error}
+              </p>
+            )}
             <AppButton type="submit">Send</AppButton>
           </form>
         )}
