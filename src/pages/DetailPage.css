@@ -14,16 +14,18 @@
 .detail-content {
   position: relative;
   z-index: 2;
-  max-width: 400px;
-  min-width: 300px;
+  max-width: 320px;   /* smaller width */
+  min-width: 220px;   /* smaller width */
   margin: 80px auto;
-  padding: 2rem;
+  padding: 1.5rem;
   border-radius: 12px;
   text-align: center;
   background-color: #FEC576;
 }
 
 .detail-recipe-box {
+  max-width: 300px;   /* even smaller white box */
+  width: 100%;
   background: #fff;
   border-radius: 16px;
   box-shadow: 0 2px 12px rgba(0,0,0,0.08);
