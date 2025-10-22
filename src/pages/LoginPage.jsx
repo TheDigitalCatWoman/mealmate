@@ -4,7 +4,7 @@ import './styling_global.css';
 import './LoginPage.css';
 import mealmateLogo from "../assets/images/mealmate-logo.png";
 import AppButton from '../components/AppButton';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const NOVI_API_URL = import.meta.env.VITE_NOVI_API_URL;
 
@@ -21,6 +21,7 @@ function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   async function login(e) {
     e.preventDefault();
